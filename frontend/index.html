@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10121a">
+  <title>StudyMate — AI Study Assistant</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">✦</div><div><strong>StudyMate</strong><small>LOCAL AI STUDY ASSISTANT</small></div></div>
+      <button id="new-chat" class="new-chat">＋ New conversation</button>
+      <p class="side-label">PROMPTING MODES</p>
+      <button class="mode active" data-mode="faq"><span>✧</span><span><b>Intelligent FAQ</b><small>Everyday student help</small></span></button>
+      <button class="mode" data-mode="zero"><span>◉</span><span><b>Zero-shot</b><small>Ask directly</small></span></button>
+      <button class="mode" data-mode="few"><span>▤</span><span><b>Few-shot</b><small>Learn from examples</small></span></button>
+      <button class="mode" data-mode="role"><span>♙</span><span><b>Role prompting</b><small>Friendly CS tutor</small></span></button>
+      <div class="sidebar-bottom">
+        <div class="local-card"><span class="status-dot"></span><div><b>Runs locally</b><small>Powered by Ollama</small></div></div>
+        <button id="check-connection" class="text-button">Check model connection ↗</button>
+        <p id="connection-status" class="connection-status">Checking connection…</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">YOUR PERSONAL LEARNING SPACE</span><h1 id="mode-title">Intelligent FAQ Assistant</h1></div>
+        <div class="model-pill"><span class="status-dot"></span><span id="model-name">Gemma 4B · Ollama</span></div>
+      </header>
+
+      <section id="welcome" class="welcome">
+        <div class="hero-icon">✦</div>
+        <p class="eyebrow">LEARN AT YOUR OWN PACE</p>
+        <h2>What are we learning<br><em>today?</em></h2>
+        <p class="welcome-copy">Ask questions, explore concepts, or prepare for your next exam. Your questions are answered by your local AI model.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-question="Explain normalization in DBMS for a 5-mark exam answer."><span>▤</span><b>Exam preparation</b><small>Explain a topic for 5 marks</small><i>↗</i></button>
+          <button class="suggestion" data-question="Teach me Python loops with a simple code example."><span>⌘</span><b>Learn to code</b><small>Understand a concept simply</small><i>↗</i></button>
+          <button class="suggestion" data-question="Help me create a realistic revision plan for an exam tomorrow."><span>◷</span><b>Make a study plan</b><small>Organize my revision</small><i>↗</i></button>
+          <button class="suggestion" data-question="How can I prepare for placements as a beginner?"><span>↗</span><b>Placement prep</b><small>Plan my next steps</small><i>↗</i></button>
+        </div>
+      </section>
+
+      <section id="chat" class="chat hidden" aria-live="polite"></section>
+
+      <div class="composer-wrap">
+        <form id="chat-form" class="composer">
+          <textarea id="message" rows="1" maxlength="4000" placeholder="Ask StudyMate anything…" aria-label="Your question"></textarea>
+          <div class="composer-bottom"><span><span class="sparkle">✦</span> AI can make mistakes. Verify important college policies.</span><button id="send" type="submit"><span>Send</span> <b>↑</b></button></div>
+        </form>
+        <p class="footer-note">PRIVATE BY DESIGN · GENERATION RUNS THROUGH YOUR LOCAL OLLAMA MODEL</p>
+      </div>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
